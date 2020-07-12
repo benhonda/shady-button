@@ -35,7 +35,7 @@ var ShadyButton = require('shady-button');
 Then use `ShadyButton` like you would a normal `<button>` element. For example:
 
 ``` js
-<ShadyButton defaultBackgroundColor = "#ffcdd2">Hello, World</ShadyButton>
+<ShadyButton backgroundColor="#FFCDD2">Hello, World</ShadyButton>
 ```
 
 ### Custom Attributes
@@ -44,7 +44,7 @@ Along with these you can also use any standard HTML Button element attribute (id
 
 | Attribute        |      Description      |  Type  |  Default |
 |---------------|-------------|------|------|
-| backgroundColor     |   the initial background color    | hex or RGB string |  "#DDDDDD" |
-| mode     | lighten or darken | String ("lighten" or "darken") | "lighten" |
+| backgroundColor     |   the initial background color    | 6-character hex or RGB string |  "#DDDDDD" |
+| mode     | lighten or darken the background color | String ("lighten" or "darken") | "lighten" |
 | hoverShadeStrength |   the strength of shading on mouse over    | Number (scale from 0 to 100) |   4.0  |
 | clickShadeStrength |   the strength of shading on mouse down    | Number (scale from 0 to 100) |   4.0  |
