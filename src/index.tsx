@@ -17,7 +17,7 @@ const { useState } = React
 function ShadyButton(props) {
     var { children, className, backgroundColor, mode, style, hoverShadeStrength, clickShadeStrength, onHover, onMouseDown, onMouseLeave, onMouseUp, ...rest } = props
     var _className = className || "";
-    var _backgroundColor = backgroundColor || "#dddddd";
+    var _backgroundColor = backgroundColor || "#DDDDDD";
     var _mode = mode || ShadyModeTypes.lighten;
     var _style = style || {};
     var _onHoverShadeStrength = hoverShadeStrength || Defaults.hoverStrength;
