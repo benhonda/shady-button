@@ -4,9 +4,9 @@ Easy color shading for your buttons to make pretty hover & click events.
 
 - No dependencies
 
-- <50kb package
+- < 50kb package
 
-- Easy to get started
+- Dead simple to implement
 
 __[See the DEMO](https://shady.benhonda.dev)__
 

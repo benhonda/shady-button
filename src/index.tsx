@@ -15,7 +15,7 @@ import {
 
 const { useState } = React
 function ShadyButton(props) {
-    var { children, className, backgroundColor, mode, style, hoverShadeStrength, clickShadeStrength, onHover, onMouseDown, onMouseLeave, onMouseUp, ...rest } = props
+    var { children, className, backgroundColor, mode, style, hoverShadeStrength, clickShadeStrength, onMouseEnter, onMouseDown, onMouseLeave, onMouseUp, ...rest } = props
     var _className = className || "";
     var _backgroundColor = backgroundColor || "#DDDDDD";
     var _mode = mode || ShadyModeTypes.lighten;
@@ -94,9 +94,9 @@ function ShadyButton(props) {
     // fix _className
     _className = `ShadyButton ShadyButton-default ${_className}`
 
-    const _onHover = () => {
+    const _onMouseEnter = () => {
         setBgColor(bgHover)
-        onHover ? onHover() : null
+        onMouseEnter ? onMouseEnter() : null
     }
 
     const _onMouseLeave = () => {
@@ -124,7 +124,7 @@ function ShadyButton(props) {
             onMouseDown={_onMouseDown}
             onMouseUp={_onMouseUp}
             onMouseLeave={_onMouseLeave}
-            onMouseEnter={_onHover}
+            onMouseEnter={_onMouseEnter}
             {...rest}
         >
             {children}
