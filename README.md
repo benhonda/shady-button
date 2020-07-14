@@ -12,6 +12,10 @@ __[See the DEMO](https://shady.benhonda.dev)__
 
 **Note: This package is designed for use in React compliant projects.**
 
+## TODO
+
+- [ ] Create more effects (other than darken and lighten)
+
 ## Install
 
 Install with `npm` :
@@ -52,5 +56,9 @@ Along with these you can also use any standard HTML Button element attribute (id
 |---------------|-------------|------|------|
 | backgroundColor     |   the initial background color    | 6-character hex or RGB string |  "#DDDDDD" |
 | mode     | lighten or darken the background color | String ("lighten" or "darken") | "lighten" |
-| hoverShadeStrength |   the strength of shading on mouse over    | Number (scale from 0 to 100) |   2.0  |
-| clickShadeStrength |   the strength of shading on mouse down    | Number (scale from 0 to 100) |   4.0  |
+| hoverShadeStrength |   the strength of shading on mouse over    | Number (scale from 0 to 1.4) |   0.44  |
+| clickShadeStrength |   the strength of shading on mouse down    | Number (scale from 0 to 1.4) |   0.50  |
+
+## Error Handling
+
+Shady should never break your app. If an invalid attribute is given, Shady will output a descriptive error message in the console.

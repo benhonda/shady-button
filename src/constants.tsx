@@ -4,18 +4,18 @@ export const ShadyModeTypes = {
 }
 
 export const Defaults = {
-    hoverStrength: 2.0,
-    clickStrength: 4.0,
+    hoverStrength: 0.44,
+    clickStrength: 0.50,
 };
 
 export const Offsets = {
     lightHoverLighten: 0.0,
     lightClickLighten: 0.0,
-    lightHoverDarken: 0.0,
-    lightClickDarken: 0.0,
+    lightHoverDarken: -0.04,
+    lightClickDarken: -0.06,
 
-    darkHoverLighten: 8.0,
-    darkClickLighten: 12.0,
-    darkHoverDarken: 4.0,
-    darkClickDarken: 7.0,
+    darkHoverLighten: 0.02,
+    darkClickLighten: 0.02,
+    darkHoverDarken: -0.01,
+    darkClickDarken: -0.02,
 }

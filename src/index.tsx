@@ -23,18 +23,20 @@ function ShadyButton(props) {
     var _onHoverShadeStrength = hoverShadeStrength || Defaults.hoverStrength;
     var _onClickShadeStrength = clickShadeStrength || Defaults.clickStrength;
 
-    // setState hook
-    const [bgColor, setBgColor] = useState(_backgroundColor)
-
     // disect color into rgb array
     var rgbArray = [] as Number[];
     if (isHexString(_backgroundColor)) {
         // is hex string
+        if (!_backgroundColor.includes("#"))
+            _backgroundColor = `#${_backgroundColor}`
         rgbArray = hexToRgb(_backgroundColor)
     } else {
         // is rgb string
         rgbArray = convertRgbStringToArray(_backgroundColor)
     }
+
+    // setState hook
+    const [bgColor, setBgColor] = useState(_backgroundColor)
 
     var defaultColorObj = rgbToObject(rgbArray[0], rgbArray[1], rgbArray[2])
     var hoverColorObj = rgbToObject(rgbArray[0], rgbArray[1], rgbArray[2])
@@ -47,26 +49,26 @@ function ShadyButton(props) {
         // check if dark
         if (isDark({ lightness: defaultColorObj.lightness })) {
             // dark
-            hoverColorObj.lightness = lighten({ lightness: hoverColorObj.lightness, increment: _onHoverShadeStrength + Offsets.darkHoverLighten })
-            clickColorObj.lightness = lighten({ lightness: clickColorObj.lightness, increment: _onClickShadeStrength + Offsets.darkClickLighten })
+            hoverColorObj.lightness = lighten({ lightness: hoverColorObj.lightness, i: _onHoverShadeStrength + Offsets.darkHoverLighten })
+            clickColorObj.lightness = lighten({ lightness: clickColorObj.lightness, i: _onClickShadeStrength + Offsets.darkClickLighten })
             isHSL = true
         } else {
             // not dark
-            hoverColorObj.lightness = lighten({ lightness: hoverColorObj.lightness, increment: _onHoverShadeStrength + Offsets.lightHoverLighten })
-            clickColorObj.lightness = lighten({ lightness: clickColorObj.lightness, increment: _onClickShadeStrength + Offsets.lightClickLighten })
+            hoverColorObj.lightness = lighten({ lightness: hoverColorObj.lightness, i: _onHoverShadeStrength + Offsets.lightHoverLighten })
+            clickColorObj.lightness = lighten({ lightness: clickColorObj.lightness, i: _onClickShadeStrength + Offsets.lightClickLighten })
             isHSL = true
         }
 
     } else if (_mode == ShadyModeTypes.darken) {
         if (isDark({ lightness: defaultColorObj.lightness })) {
             // dark
-            hoverColorObj.lightness = darken({ lightness: hoverColorObj.lightness, increment: _onHoverShadeStrength + Offsets.darkHoverDarken })
-            clickColorObj.lightness = darken({ lightness: clickColorObj.lightness, increment: _onClickShadeStrength + Offsets.darkClickDarken })
+            hoverColorObj.lightness = darken({ lightness: hoverColorObj.lightness, i: _onHoverShadeStrength + Offsets.darkHoverDarken })
+            clickColorObj.lightness = darken({ lightness: clickColorObj.lightness, i: _onClickShadeStrength + Offsets.darkClickDarken })
             isHSL = true
         } else {
             // not dark
-            hoverColorObj.lightness = darken({ lightness: hoverColorObj.lightness, increment: _onHoverShadeStrength + Offsets.lightHoverDarken })
-            clickColorObj.lightness = darken({ lightness: clickColorObj.lightness, increment: _onClickShadeStrength + Offsets.lightClickDarken })
+            hoverColorObj.lightness = darken({ lightness: hoverColorObj.lightness, i: _onHoverShadeStrength + Offsets.lightHoverDarken })
+            clickColorObj.lightness = darken({ lightness: clickColorObj.lightness, i: _onClickShadeStrength + Offsets.lightClickDarken })
             isHSL = true
         }
     } else {

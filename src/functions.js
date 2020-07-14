@@ -1,15 +1,17 @@
 
 export const isHexString = (hex) => {
-    if (hex.length == 6) {
-        hex = `#${hex}`
+    var hexString = hex;
+    if (!hex.includes("#")) {
+        hexString = `#${hex}`;
     }
-    return RegExp("^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$").test(hex);
+    return RegExp("^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$").test(hexString);
 }
 
-export const hexToRgb = (hex) => {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : [];
-}
+export const hexToRgb = hex =>
+    hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
+        , (m, r, g, b) => '#' + r + r + g + g + b + b)
+        .substring(1).match(/.{2}/g)
+        .map(x => parseInt(x, 16))
 
 export const convertRgbStringToArray = (rgbString) => {
     var rgb = [];
@@ -93,14 +95,14 @@ export const hslToObject = (hue, saturation, lightness) => {
 /* ------------------------------------------------
 FUNCTIONS
 ------------------------------------------------  */
-export const saturate = ({ saturation, increment }) => Math.min(1, saturation + (increment / 100));
-export const desaturate = ({ saturation, increment }) => Math.max(0, saturation - (increment / 100));
-export const lighten = ({ lightness, increment }) => Math.min(1, lightness + (increment / 100));
-export const darken = ({ lightness, increment }) => Math.max(0, lightness - (increment / 100));
+const power = (i) => (i - 0.37);
+export const saturate = ({ saturation, i }) => Math.min(1, saturation + power(i));
+export const desaturate = ({ saturation, i }) => Math.max(0, saturation - power(i));
+export const lighten = ({ lightness, i }) => Math.min(1, lightness + power(i));
+export const darken = ({ lightness, i }) => Math.max(0, lightness - power(i));
 
 /* ------------------------------------------------
 PREDICATES
 ------------------------------------------------  */
 export const isGrayscale = ({ saturation }) => saturation === 0;
-// export const isDark = ({ lightness }) => lightness < 0.5;
-export const isDark = ({ lightness }) => lightness < 0.6;
+export const isDark = ({ lightness }) => lightness < 0.55;
