@@ -14,6 +14,7 @@ __[See the DEMO](https://shady.benhonda.dev)__
 
 ## TODO
 
+- [ ] Create text-only effect (no background color)
 - [ ] Create more effects (other than darken and lighten)
 
 ## Install
@@ -58,6 +59,7 @@ Along with these you can also use any standard HTML Button element attribute (id
 | mode     | lighten or darken the background color | String ("lighten" or "darken") | "lighten" |
 | hoverShadeStrength |   the strength of shading on mouse over    | Number (scale from 0 to 1.4) |   0.44  |
 | clickShadeStrength |   the strength of shading on mouse down    | Number (scale from 0 to 1.4) |   0.50  |
+| disable |   disable the effect    | Boolean |   false  |
 
 ## Error Handling
 

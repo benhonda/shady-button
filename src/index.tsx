@@ -15,13 +15,14 @@ import {
 
 const { useState } = React
 function ShadyButton(props) {
-    var { children, className, backgroundColor, mode, style, hoverShadeStrength, clickShadeStrength, onMouseEnter, onMouseDown, onMouseLeave, onMouseUp, ...rest } = props
+    var { children, className, backgroundColor, mode, style, hoverShadeStrength, clickShadeStrength, onMouseEnter, onMouseDown, onMouseLeave, onMouseUp, disable, ...rest } = props
     var _className = className || "";
     var _backgroundColor = backgroundColor || "#DDDDDD";
     var _mode = mode || ShadyModeTypes.lighten;
     var _style = style || {};
     var _onHoverShadeStrength = hoverShadeStrength || Defaults.hoverStrength;
     var _onClickShadeStrength = clickShadeStrength || Defaults.clickStrength;
+    var _disable = disable || false;
 
     // disect color into rgb array
     var rgbArray = [] as Number[];
@@ -97,32 +98,29 @@ function ShadyButton(props) {
     _className = `ShadyButton ShadyButton-default ${_className}`
 
     const _onMouseEnter = () => {
-        setBgColor(bgHover)
+        if (!_disable && _onHoverShadeStrength > 0) setBgColor(bgHover)
         onMouseEnter ? onMouseEnter() : null
     }
 
     const _onMouseLeave = () => {
-        setBgColor(_backgroundColor)
+        if (!_disable && _onHoverShadeStrength > 0) setBgColor(_backgroundColor)
         onMouseLeave ? onMouseLeave() : null
     }
 
     const _onMouseUp = () => {
-        setBgColor(bgHover)
+        if (!_disable && _onClickShadeStrength > 0) setBgColor(bgHover)
         onMouseUp ? onMouseUp() : null
     }
 
     const _onMouseDown = () => {
-        setBgColor(bgClick)
+        if (!_disable && _onClickShadeStrength > 0) setBgColor(bgClick)
         onMouseDown ? onMouseDown() : null
     }
 
     return (
         <button
             className={_className}
-            style={{
-                backgroundColor: bgColor,
-                ..._style
-            }}
+            style={{ ..._style, backgroundColor: bgColor, }}
             onMouseDown={_onMouseDown}
             onMouseUp={_onMouseUp}
             onMouseLeave={_onMouseLeave}
